@@ -2,9 +2,16 @@
 
 **Prove that evidence objects can be stored, sealed, traced, restored, and reported without trusting the vendor.**
 
-This is a sandbox prototype for the storage/evidence branch of TIBET conformance. It mirrors
-the zero-trust style of `ztip-conformance` and `tibet-comms-conformance`: vectors are the
-contract; reference code is only one implementation.
+The public conformance kit for the TIBET **storage / evidence** branch. It mirrors the zero-trust
+style of `ztip-conformance` and `tibet-comms-conformance`: vectors are the contract; reference code
+is only one implementation.
+
+> **Maturity: structural.** These vectors prove **decision-logic** conformance over evidence objects
+> (store / seal / trace / restore / report) — given the same inputs, a second implementation reaches
+> the same outcome and ordering. They use *logical* fixtures: placeholder keys and synthetic hashes,
+> not real TBZ/.tza bytes or CycloneDX/SPDX documents yet (see [ROADMAP.md](ROADMAP.md)). The
+> real-crypto reference kit, with verifiable Ed25519 and a live capstone, is
+> [ztip-conformance](https://github.com/Jtel-ZTIP-w3c/ztip-conformance).
 
 ## What this repo is
 

@@ -1,0 +1,10 @@
+{
+  "primitive": "sealed-object",
+  "version": 2,
+  "expected_recipient": "jis:agent:bob",
+  "cases": [
+    {"name": "valid-sealed", "carrier": {"carrier_kind": "tza.sealed.v1", "payload": "sealed bytes", "content_hash": "sha256:f35cf5b361b0eaf7b0c02e75808e260e3f379c4745abe45552ba768e85687749", "recipient": "jis:agent:bob"}, "expect_decision": "accept"},
+    {"name": "hash-mismatch", "carrier": {"carrier_kind": "tza.sealed.v1", "payload": "tampered bytes", "content_hash": "sha256:f35cf5b361b0eaf7b0c02e75808e260e3f379c4745abe45552ba768e85687749", "recipient": "jis:agent:bob"}, "expect_decision": "quarantine"},
+    {"name": "wrong-recipient", "carrier": {"carrier_kind": "tza.sealed.v1", "payload": "sealed bytes", "content_hash": "sha256:f35cf5b361b0eaf7b0c02e75808e260e3f379c4745abe45552ba768e85687749", "recipient": "jis:agent:alice"}, "expect_decision": "quarantine"}
+  ]
+}

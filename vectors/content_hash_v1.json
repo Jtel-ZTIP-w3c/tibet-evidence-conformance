@@ -1,0 +1,8 @@
+{
+  "primitive": "content-hash",
+  "version": 1,
+  "cases": [
+    {"name": "same-bytes", "bytes": "hello evidence", "expected_hash": "sha256:9af4c73b2a919f220f4b008e466b52808a1987122d95ff0f2dde00968e36e844", "expect_match": true},
+    {"name": "tampered-byte", "bytes": "hello evidencf", "expected_hash": "sha256:9af4c73b2a919f220f4b008e466b52808a1987122d95ff0f2dde00968e36e844", "expect_match": false}
+  ]
+}

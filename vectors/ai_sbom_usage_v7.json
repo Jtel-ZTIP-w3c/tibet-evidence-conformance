@@ -1,0 +1,10 @@
+{
+  "primitive": "ai-sbom-usage",
+  "version": 7,
+  "required": ["actor_id", "provider", "model", "purpose", "timestamp"],
+  "cases": [
+    {"name": "valid-usage", "event": {"actor_id": "jis:agent:gateway", "provider": "openai", "model": "gpt-x", "purpose": "summarize", "timestamp": "2026-06-12T10:00:00Z"}, "expect_valid": true},
+    {"name": "missing-purpose", "event": {"actor_id": "jis:agent:gateway", "provider": "openai", "model": "gpt-x", "timestamp": "2026-06-12T10:00:00Z"}, "expect_valid": false},
+    {"name": "bad-actor", "event": {"actor_id": "gateway.aint", "provider": "openai", "model": "gpt-x", "purpose": "summarize", "timestamp": "2026-06-12T10:00:00Z"}, "expect_valid": false}
+  ]
+}

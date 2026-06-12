@@ -1,0 +1,9 @@
+{
+  "primitive": "cbom-chain",
+  "version": 4,
+  "cases": [
+    {"name": "valid-transform", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:p", "transform": "redact"}, "expect_valid": true},
+    {"name": "wrong-parent", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-other", "input_hash": "sha256:p", "transform": "redact"}, "expect_valid": false},
+    {"name": "wrong-input-hash", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:x", "transform": "redact"}, "expect_valid": false}
+  ]
+}

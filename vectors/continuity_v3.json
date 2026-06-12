@@ -1,0 +1,10 @@
+{
+  "primitive": "continuity-envelope",
+  "version": 3,
+  "cases": [
+    {"name": "verified-path", "states": ["created", "arrived", "verified", "accepted"], "expect_valid": true},
+    {"name": "quarantine-path", "states": ["created", "arrived", "quarantined"], "expect_valid": true},
+    {"name": "skip-arrived", "states": ["created", "verified", "accepted"], "expect_valid": false},
+    {"name": "revive-quarantine", "states": ["created", "arrived", "quarantined", "accepted"], "expect_valid": false}
+  ]
+}

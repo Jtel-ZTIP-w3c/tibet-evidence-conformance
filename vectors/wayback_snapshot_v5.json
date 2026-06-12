@@ -1,0 +1,10 @@
+{
+  "primitive": "wayback-snapshot",
+  "version": 5,
+  "expected": {"README.md": "sha256:a", "app.py": "sha256:b"},
+  "cases": [
+    {"name": "restore-exact", "restored": {"README.md": "sha256:a", "app.py": "sha256:b"}, "expect_match": true},
+    {"name": "missing-file", "restored": {"README.md": "sha256:a"}, "expect_match": false},
+    {"name": "changed-file", "restored": {"README.md": "sha256:a", "app.py": "sha256:x"}, "expect_match": false}
+  ]
+}

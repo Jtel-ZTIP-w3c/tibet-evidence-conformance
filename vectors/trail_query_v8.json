@@ -1,0 +1,14 @@
+{
+  "primitive": "trail-query",
+  "version": 8,
+  "events": [
+    {"event_id": "evt-1", "object_id": "obj-a", "actor_id": "jis:agent:a", "cascade_id": "cas-1"},
+    {"event_id": "evt-2", "object_id": "obj-a", "actor_id": "jis:agent:b", "cascade_id": "cas-1"},
+    {"event_id": "evt-3", "object_id": "obj-b", "actor_id": "jis:agent:a", "cascade_id": "cas-2"}
+  ],
+  "cases": [
+    {"name": "by-object", "query": {"object_id": "obj-a"}, "expect_event_ids": ["evt-1", "evt-2"]},
+    {"name": "by-actor", "query": {"actor_id": "jis:agent:a"}, "expect_event_ids": ["evt-1", "evt-3"]},
+    {"name": "by-cascade", "query": {"cascade_id": "cas-2"}, "expect_event_ids": ["evt-3"]}
+  ]
+}

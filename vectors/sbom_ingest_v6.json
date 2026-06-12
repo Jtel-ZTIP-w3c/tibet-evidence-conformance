@@ -1,0 +1,9 @@
+{
+  "primitive": "sbom-ingest",
+  "version": 6,
+  "cases": [
+    {"name": "valid-dependency", "dependency": {"name": "cryptography", "version": "48.0.1", "purl": "pkg:pypi/cryptography@48.0.1", "source": "requirements.txt"}, "expect_valid": true},
+    {"name": "missing-purl", "dependency": {"name": "cryptography", "version": "48.0.1", "source": "requirements.txt"}, "expect_valid": false},
+    {"name": "missing-version", "dependency": {"name": "cryptography", "purl": "pkg:pypi/cryptography", "source": "requirements.txt"}, "expect_valid": false}
+  ]
+}

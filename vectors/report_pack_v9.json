@@ -1,0 +1,10 @@
+{
+  "primitive": "report-pack",
+  "version": 9,
+  "required_refs": ["content_hash", "continuity_envelope", "trail_events", "sbom"],
+  "cases": [
+    {"name": "complete-pack", "refs": {"content_hash": "sha256:x", "continuity_envelope": "cont-1", "trail_events": ["evt-1"], "sbom": "sbom-1"}, "expect_valid": true},
+    {"name": "missing-sbom", "refs": {"content_hash": "sha256:x", "continuity_envelope": "cont-1", "trail_events": ["evt-1"]}, "expect_valid": false},
+    {"name": "empty-trail", "refs": {"content_hash": "sha256:x", "continuity_envelope": "cont-1", "trail_events": [], "sbom": "sbom-1"}, "expect_valid": false}
+  ]
+}

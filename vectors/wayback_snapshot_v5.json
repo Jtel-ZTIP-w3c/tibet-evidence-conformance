@@ -1,10 +1,12 @@
 {
   "primitive": "wayback-snapshot",
   "version": 5,
-  "expected": {"README.md": "sha256:a", "app.py": "sha256:b"},
+  "class": "evidence/integrity",
+  "note": "Re-hash each restored file's bytes and compare to the expected digest map. A restore is faithful only if every file's SHA-256 matches.",
+  "expected": {"README.md": "sha256:22a0e8291da9b4ab761b11576a46f810c476224f423a17fdadaaee7af0a1299f", "app.py": "sha256:3a6191fe20a5dcb0ba117e3268e85695dbdec16bc8fb90482c606dd8547986a6"},
   "cases": [
-    {"name": "restore-exact", "restored": {"README.md": "sha256:a", "app.py": "sha256:b"}, "expect_match": true},
-    {"name": "missing-file", "restored": {"README.md": "sha256:a"}, "expect_match": false},
-    {"name": "changed-file", "restored": {"README.md": "sha256:a", "app.py": "sha256:x"}, "expect_match": false}
+    {"name": "restore-exact", "restored": {"README.md": "# Evidence kit\nRunnable interop conformance.\n", "app.py": "print('evidence app v5')\n"}, "expect_match": true},
+    {"name": "missing-file", "restored": {"README.md": "# Evidence kit\nRunnable interop conformance.\n"}, "expect_match": false},
+    {"name": "changed-file", "restored": {"README.md": "# Evidence kit\nRunnable interop conformance.\n", "app.py": "print('evidence app v5 TAMPERED')\n"}, "expect_match": false}
   ]
 }

@@ -1,9 +1,12 @@
 {
   "primitive": "cbom-chain",
   "version": 4,
+  "class": "evidence/integrity",
+  "note": "Re-hash the parent bytes to its content_hash, then verify the child links input_hash to that exact digest. The chain is bound by SHA-256, not by string equality of pre-filled fields.",
   "cases": [
-    {"name": "valid-transform", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:p", "transform": "redact"}, "expect_valid": true},
-    {"name": "wrong-parent", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-other", "input_hash": "sha256:p", "transform": "redact"}, "expect_valid": false},
-    {"name": "wrong-input-hash", "parent": {"object_id": "obj-parent", "content_hash": "sha256:p"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:x", "transform": "redact"}, "expect_valid": false}
+    {"name": "valid-transform", "parent": {"object_id": "obj-parent", "bytes": "parent evidence object: redacted source v4", "content_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e", "transform": "redact"}, "expect_valid": true},
+    {"name": "wrong-parent", "parent": {"object_id": "obj-parent", "bytes": "parent evidence object: redacted source v4", "content_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e"}, "child": {"parent_id": "obj-other", "input_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e", "transform": "redact"}, "expect_valid": false},
+    {"name": "wrong-input-hash", "parent": {"object_id": "obj-parent", "bytes": "parent evidence object: redacted source v4", "content_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:22a0e8291da9b4ab761b11576a46f810c476224f423a17fdadaaee7af0a1299f", "transform": "redact"}, "expect_valid": false},
+    {"name": "tampered-parent-byte", "parent": {"object_id": "obj-parent", "bytes": "parent evidence object: redacted source v4 TAMPERED", "content_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e"}, "child": {"parent_id": "obj-parent", "input_hash": "sha256:a7d5928635916fc2b7cbb5bc9f0ec91c98125163851cac853b34f324bddb278e", "transform": "redact"}, "expect_valid": false}
   ]
 }

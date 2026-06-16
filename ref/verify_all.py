@@ -62,23 +62,28 @@ def continuity():
 
 def cbom():
     d = load("cbom_chain_v4.json")
-    print("### v4 - CBOM chain")
+    print("### v4 - CBOM chain (real sha256)")
     total = passed = 0
     for c in d["cases"]:
         total += 1
         p, child = c["parent"], c["child"]
-        got = child["parent_id"] == p["object_id"] and child["input_hash"] == p["content_hash"]
+        # integrity: re-hash the parent bytes; the chain links only if input_hash == that digest
+        parent_ok = h(p["bytes"]) == p["content_hash"]
+        link_ok = child["parent_id"] == p["object_id"] and child["input_hash"] == p["content_hash"]
+        got = parent_ok and link_ok
         passed += show(got == c["expect_valid"], c["name"], got, c["expect_valid"])
     return passed, total
 
 
 def wayback():
     d = load("wayback_snapshot_v5.json")
-    print("### v5 - Wayback snapshot")
+    print("### v5 - Wayback snapshot (real sha256)")
     total = passed = 0
     for c in d["cases"]:
         total += 1
-        got = c["restored"] == d["expected"]
+        # integrity: re-hash each restored file's bytes; faithful only if every digest matches
+        restored = {name: h(body) for name, body in c["restored"].items()}
+        got = restored == d["expected"]
         passed += show(got == c["expect_match"], c["name"], got, c["expect_match"])
     return passed, total
 

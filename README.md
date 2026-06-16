@@ -6,11 +6,15 @@ The public conformance kit for the TIBET **storage / evidence** branch. It mirro
 style of `ztip-conformance` and `tibet-comms-conformance`: vectors are the contract; reference code
 is only one implementation.
 
-> **Maturity: structural.** These vectors prove **decision-logic** conformance over evidence objects
-> (store / seal / trace / restore / report) — given the same inputs, a second implementation reaches
-> the same outcome and ordering. They use *logical* fixtures: placeholder keys and synthetic hashes,
-> not real TBZ/.tza bytes or CycloneDX/SPDX documents yet (see [ROADMAP.md](ROADMAP.md)). The
-> real-crypto reference kit, with verifiable Ed25519 and a live capstone, is
+> **Maturity: real-byte integrity + structural logic** — verified per the
+> [verification model](https://github.com/Humotica/conformance/blob/main/VERIFICATION-MODEL.md).
+> The **integrity primitives** (`content_hash`, `sealed_object`, `cbom_chain`, `wayback_snapshot`)
+> verify over **real SHA-256 bytes**: the verifier re-hashes the named bytes and ships a tampered-byte
+> negative (`tampered-byte`, `hash-mismatch`, `tampered-parent-byte`, `changed-file`) that a
+> string-equality checker would wrongly pass. The **manifest / query / logic primitives**
+> (`sbom_ingest`, `ai_sbom_usage`, `trail_query`, `report_pack`, `continuity`) are **structural by
+> design** — a deterministic function of the record is the complete interop proof; a signature there
+> proves nothing about interop. The real-crypto *identity* reference kit (Ed25519 + live capstone) is
 > [ztip-conformance](https://github.com/Jtel-ZTIP-w3c/ztip-conformance).
 
 ## What this repo is
